@@ -85,7 +85,7 @@
      * on the current height of the element and the line-height of the text.
      */
     function getMaxLines(height) {
-      var availHeight = height || element.getBoundingClientRect().height,
+      var availHeight = height || Math.floor(element.getBoundingClientRect().height),
         lineHeight = getLineHeight(element);
 
       return Math.max(Math.floor(availHeight / lineHeight), 0);
@@ -196,7 +196,7 @@
       //Search produced valid chunks
       if (chunks) {
         //It fits
-        if (element.getBoundingClientRect().height <= maxHeight) {
+        if (Math.floor(element.getBoundingClientRect().height) <= maxHeight) {
           //There's still more characters to try splitting on, not quite done yet
           if (splitOnChars.length >= 0 && splitChar !== '') {
             applyEllipsis(target, chunks.join(splitChar) + splitChar + lastChunk);
@@ -256,7 +256,7 @@
       }
     } else {
       var height = getMaxHeight(clampValue);
-      if (height <= element.getBoundingClientRect().height) {
+      if (height <= Math.floor(element.getBoundingClientRect().height)) {
         clampedText = truncate(getLastChild(element), height);
       }
     }
