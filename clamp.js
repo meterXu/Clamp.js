@@ -256,7 +256,7 @@
       }
     } else {
       var height = getMaxHeight(clampValue);
-      if (height <= Math.floor(element.getBoundingClientRect().height)) {
+      if (height < Math.floor(element.getBoundingClientRect().height)) {
         clampedText = truncate(getLastChild(element), height);
       }
     }
